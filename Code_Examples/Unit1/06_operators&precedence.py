@@ -1,3 +1,5 @@
+################ Python Operator & Operation Precedence #################
+
 #comparison operators: A few examples
 a = 6
 b = 4
@@ -9,6 +11,8 @@ c = 6
 #Greater or equal than >=
 #Lesser Than <
 #Lesser or equal than <=
+
+#Here are some examples using the above variable values:
 a == b #FALSE
 a != b #TRUE
 a > b #TRUE
@@ -18,9 +22,10 @@ a <= c #TRUE
 #CHALLENGE: Try printing these comparison to see the answer in the terminal
 
 #logic operators: evaluate conditions
-# and -- TRUE if both conditions are true
-# or -- TRUE if either conditions are true
-# not -- flips the result TRUE -> FALSE or vice versa
+    # and -- TRUE if both conditions are true
+    # or -- TRUE if either conditions are true
+    # not -- flips the result TRUE -> FALSE or vice versa
+
 a > b and a == c # TRUE
 a > b or a < c # TRUE
 not(a > b and a == c) #FALSE

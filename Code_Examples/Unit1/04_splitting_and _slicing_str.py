@@ -1,3 +1,6 @@
+################ Python String Slitting & Slicing #################
+
+
 #Strings can me modified in useful ways. We can split them at a defined seperator (i.e. '-' below):
 myString = "February-06-2024"
 month, day, year = myString.split("-")

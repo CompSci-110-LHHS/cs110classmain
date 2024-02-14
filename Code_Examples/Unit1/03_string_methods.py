@@ -1,3 +1,5 @@
+################ Python Strings & String Methods #################
+
 #Once a string is defined, we can use built-in methods (aka functions) to perform many types of operations
 myString = "String Example"
 print(myString)

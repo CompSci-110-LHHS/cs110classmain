@@ -1,3 +1,5 @@
+################ Python Booleans - True or False Values #################
+
 #The following statements evaluate to either true or false and can be printed to the terminal:
 print(4 > 3) #TRUE
 print(2 < 1) #FALSE
@@ -12,7 +14,7 @@ pwdLength = len(password) #returns the length of the string
 if pwdLength > 12:         #evaluates to FALSE   
     print("Great, your password is strong!")
 else:
-    print("Sorry, password is too weak. Try again!")
+   print("Sorry, password is too weak. Try again!")
 
 
 
