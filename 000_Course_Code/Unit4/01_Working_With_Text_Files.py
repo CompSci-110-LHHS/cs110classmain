@@ -60,13 +60,17 @@
 #Copies the contents of input.txt to a new file called output.txt
 with open("input.txt", "r") as rf:  
     with open("output.txt", "w") as wf:
-        text_list = rf.readlines()
-        print(text_list)
-        text_list.reverse()
-        print(text_list)
-        for line in text_list:
-            pass
-        #DO SOMETHING HERE TO WRITE TO NEW OUTPUT.TXT FILE
+        text_list = rf.readlines()        
+        text_list.reverse()      
+        for item in text_list:
+            item = item.rstrip("\n")
+            wf.write(item+"\n")           
+            
+           
+       
+       
+            
+        
        
         
 ################ EXAMPLE 5 - End ##################

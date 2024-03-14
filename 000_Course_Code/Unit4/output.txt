@@ -1,0 +1,10 @@
+10 - Ruby
+9 - Rust
+8 - SQL
+7 - HTML/CSS
+6 - PHP
+5 - C#
+4 - C++
+3 - Javascript
+2 - Java
+1 - Python
