@@ -39,7 +39,7 @@
 # #uses a context manager to open our csv file
 # with open("LHHS_Staff_Directory_2023-11-01.csv", "r") as csv_file:
 #     csv_reader = csv.reader(csv_file)  
-#     with open("LHHS_Staff_Directory_backup.csv", "w") as new_csv:
+#     with open("LHHS_Staff_Directory_backup.csv", "w", newline="") as new_csv:
 #         csv_writer = csv.writer(new_csv)           
 #         for line in csv_reader:            
 #             csv_writer.writerow(line)             
