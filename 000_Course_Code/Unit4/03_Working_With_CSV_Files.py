@@ -40,7 +40,7 @@
 # with open("LHHS_Staff_Directory_2023-11-01.csv", "r") as csv_file:
 #     csv_reader = csv.reader(csv_file)  
 #     with open("LHHS_Staff_Directory_backup.csv", "w", newline="") as new_csv:
-#         csv_writer = csv.writer(new_csv)           
+#         csv_writer = csv.writer(new_csv, delimiter="\t")           
 #         for line in csv_reader:            
 #             csv_writer.writerow(line)             
     
@@ -49,6 +49,31 @@
 # print("**********************************************************")
 
 ################ EXAMPLE 2 - End ##################
+
+################ EXAMPLE 3 - Start ##################
+############### UNCOMMENT BELOW TO RUN ##############
+
+import csv
+
+with open("LHHS_Staff_Directory_2023-11-01.csv") as r_csv:
+    csv_reader = csv.DictReader(r_csv)    
+    with open("csv_backup.csv", "w", newline="") as w_csv:
+        fields = ["First Name", "Last Name", "Position", "Email"]
+        csv_writer = csv.DictWriter(w_csv, fieldnames=fields)
+        csv_writer.writeheader()
+        for row in csv_reader:
+            firstname = row["First Name"]
+            lastname = row["Last Name"]
+            position = row["Position"]
+            email = firstname.upper() + "." + lastname.upper() + "@nbed.nb.ca"
+            if position.find("Teacher") != -1:
+                csv_writer.writerow({"First Name":firstname, "Last Name":lastname, "Position":position, "Email":email})             
+    
+print("**********************************************************")
+print("New reformated csv created!")
+print("**********************************************************")
+
+################ EXAMPLE 3 - End ##################
 
 ################ EXAMPLE 3 - Start ##################
 ############### UNCOMMENT BELOW TO RUN ##############
@@ -66,7 +91,10 @@
 #             lastname = row["Last Name"]
 #             position = row["Position"]
 #             email = firstname.upper() + "." + lastname.upper() + "@nbed.nb.ca"
-#             csv_writer.writerow({"First Name":firstname, "Last Name":lastname, "Position":position, "Email":email})             
+#             if position.find("Teacher") != -1:
+#                 csv_writer.writerow({"First Name":firstname, "Last Name":lastname, "Position":position, "Email":email})
+#             else:
+#                 print(f"{firstname} {lastname} is not a Teacher")             
     
 # print("**********************************************************")
 # print("New reformated csv created!")
