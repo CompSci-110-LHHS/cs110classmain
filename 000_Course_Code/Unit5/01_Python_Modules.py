@@ -103,26 +103,67 @@
 ################ EXAMPLE 6 - Start ##################
 ############### UNCOMMENT BELOW TO RUN ##############
 
-import datetime, time
-from tkinter import *
+# import datetime, time
+# from tkinter import *
 
-def getCount():
-    currentDate = datetime.datetime.now()
-    lastClassDay = datetime.datetime(2024, 6, 25)
-    timeRemaining = lastClassDay - currentDate
-    print(f"{timeRemaining.total_seconds()} until summer break!")    
 
-root =Tk()
-root.minsize(width=300, height=150)
-clockTime = StringVar()
-clockTime.set("HERE IS MY CLOCK")
-mainFrame = Frame(root)
-mainFrame.pack()
-clock = Label(mainFrame, textvariable=clockTime, anchor="center")
-clock.pack()
+# root =Tk()
+# root.minsize(width=300, height=150)
 
-root.mainloop()
+# #VARIABLES
+# counter = 0
+# clockTime = StringVar()
+# clockTime.set("HERE IS MY CLOCK")
+# mainFrame = Frame(root)
+# mainFrame.pack()
+# clock = Label(mainFrame, textvariable=clockTime, anchor="center")
+# clock.pack()
+
+# #FUNCTIONS
+# def getCount(counter):    
+#     currentDate = datetime.datetime.now()
+#     lastClassDay = datetime.datetime(2024, 6, 25)
+#     timeRemaining = lastClassDay - currentDate
+#     remainingSec = timeRemaining.total_seconds()
+#     clockTime.set("RUNNING")
+#     print(f"{timeRemaining.total_seconds()} until summer break!")    
+#     counter += 1
+
+# startButton = Button(mainFrame, text="START", command=getCount)
+# startButton.pack()
+
+# root.mainloop()
 
 
     
 ################ EXAMPLE 6 - END ##################
+
+#Import the required library
+from tkinter import *
+import datetime, time
+
+#Define the function for the timer
+def countdowntimer():   
+   while True:
+        currentDate = datetime.datetime.now()
+        lastClassDay = datetime.datetime(2024, 6, 25)
+        timeRemaining = lastClassDay - currentDate
+        remainingTime = timeRemaining.total_seconds()
+        clockTime.set(remainingTime)
+        print(f"{remainingTime} until summer break!")
+        root.update()
+        time.sleep(1)
+
+#Create an instance of tkinter frame
+root = Tk()
+root.geometry('750x300')
+root.resizable(False,False)
+
+#Create Label
+clockTime = StringVar()
+clockTime.set('START') 
+Label(root, textvariable=clockTime).pack()        
+
+Button(root, text='START', bd ='2',font =('Helvetica bold',10), command = countdowntimer).pack()
+
+root.mainloop()
