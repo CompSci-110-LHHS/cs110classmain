@@ -140,30 +140,63 @@
 
 #Import the required library
 from tkinter import *
-import datetime, time
+import datetime, time, math
+from dateutil.relativedelta import relativedelta
 
 #Define the function for the timer
 def countdowntimer():   
    while True:
         currentDate = datetime.datetime.now()
-        lastClassDay = datetime.datetime(2024, 6, 25)
+        lastClassDay = datetime.datetime(2024, 6, 25, 15, 25, 0)        
         timeRemaining = lastClassDay - currentDate
-        remainingTime = timeRemaining.total_seconds()
-        clockTime.set(remainingTime)
-        print(f"{remainingTime} until summer break!")
+        totalSeconds = timeRemaining.total_seconds()
+        remainingSeconds = math.floor((totalSeconds%60))
+        remainingMinutes = math.floor((totalSeconds/60)%60)        
+        remainingHours = math.floor(totalSeconds/3600%24)
+        remainingDays = math.floor(totalSeconds/86400)
+        
+        # timeUnits = ["years", "months", "days","hours", "minutes","seconds"]
+        # timeRemaining = relativedelta(lastClassDay,currentDate)         
+        # remainingSeconds = timeRemaining.seconds
+        # remainingMinutes = timeRemaining.minutes    
+        # remainingHours = timeRemaining.hours
+        # remainingDays = timeRemaining.days
+        # remainingMonths = timeRemaining.months
+        # clockString = f"{remainingMonths}:{remainingDays}:{remainingHours}:{remainingMinutes}:{remainingSeconds}"
+
+        clockString = clockString = f"{remainingDays:03.0f}:{remainingHours:02.0f}:{remainingMinutes:02.0f}:{remainingSeconds:02.0f} (DDD:HH:MM:SS)"
+        clockTime.set(clockString)
+        print(f"{clockString} until summer break!")
         root.update()
         time.sleep(1)
 
 #Create an instance of tkinter frame
 root = Tk()
-root.geometry('750x300')
-root.resizable(False,False)
+root.minsize(width=800, height=250)
 
 #Create Label
 clockTime = StringVar()
 clockTime.set('START') 
-Label(root, textvariable=clockTime).pack()        
 
-Button(root, text='START', bd ='2',font =('Helvetica bold',10), command = countdowntimer).pack()
+#Create Frames to Organize Content
+mainFrame = Frame(root)
+mainFrame.pack()
+
+container = LabelFrame(root, text="", padx=10, pady=10)
+container.place(relx=0.5, rely=0.5, anchor="center")
+
+upperFrame = Frame(container, padx=5,pady=5)
+upperFrame.pack()
+
+middleFrame = Frame(container, padx=5,pady=5)
+middleFrame.pack()
+
+lowerFrame = Frame(container, padx=5,pady=5)
+lowerFrame.pack()
+
+Label(middleFrame, textvariable=clockTime, bg ='black', fg='green', font =('Impact',30), bd=10, relief="sunken", padx=20, width=30).pack()        
+
+Button(lowerFrame, text='START', padx=5, bd ='2',font =('Helvetica bold',20), command = countdowntimer).pack()
+Button(lowerFrame, text='STOP', padx=5, bd ='2',font =('Helvetica bold',20), command = root.destroy).pack()
 
 root.mainloop()
